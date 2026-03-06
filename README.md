@@ -132,4 +132,4 @@ PacHub is licensed under the **GNU General Public License v2.0**. See the [GPL-2
 - Homepage: [github.com/mrks1469/PacHub](https://github.com/mrks1469/PacHub)
 - Bug reports: [github.com/mrks1469/PacHub/issues](https://github.com/mrks1469/PacHub/issues)
 
-Contributions, bug reports, and pull requests are welcome!
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/mrks0001)
