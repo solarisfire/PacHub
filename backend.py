@@ -9,55 +9,6 @@ import threading
 from gi.repository import GLib
 
 
-# ─── Demo data (used when pacman is unavailable) ──────────────────────────────
-
-DEMO_PACKAGES = [
-    ("base","3-1","core","Minimal package set to define a basic Arch Linux installation"),
-    ("linux","6.7.4.arch1-1","core","The Linux kernel and modules"),
-    ("linux-firmware","20240312.bf4e0cc-1","core","Firmware files for Linux"),
-    ("glibc","2.39-1","core","GNU C Library"),
-    ("bash","5.2.026-2","core","The GNU Bourne Again shell"),
-    ("coreutils","9.4-2","core","Basic file, shell and text manipulation utilities"),
-    ("systemd","255.4-1","core","System and service manager"),
-    ("dbus","1.14.10-2","core","Freedesktop.org message bus system"),
-    ("gtk4","4.14.1-1","extra","GObject-based multi-platform UI toolkit"),
-    ("libadwaita","1.5.0-1","extra","Building blocks for modern GNOME applications"),
-    ("python","3.11.8-1","core","High-level scripting language"),
-    ("git","2.44.0-1","extra","The fast distributed version control system"),
-    ("vim","9.1.0104-1","extra","Vi Improved, a highly configurable text editor"),
-    ("nano","7.2-3","core","Pico editor clone with enhancements"),
-    ("curl","8.6.0-1","core","URL retrieval utility and library"),
-    ("wget","1.21.4-1","extra","Network utility to retrieve files from the web"),
-    ("openssh","9.6p1-1","core","SSH connectivity tools"),
-    ("pacman","6.0.2-8","core","A library-based package manager"),
-    ("mesa","23.3.5-1","extra","Open-source implementation of OpenGL"),
-    ("alsa-utils","1.2.11-1","extra","ALSA utilities"),
-    ("pipewire","1.0.3-3","extra","Low-latency audio/video router and processor"),
-    ("networkmanager","1.46.0-1","extra","Network connection manager and user applications"),
-    ("firefox","123.0.1-1","extra","Standalone web browser from Mozilla"),
-    ("chromium","122.0.6261.128-1","extra","Open-source web browser project from Google"),
-    ("gimp","2.10.36-2","extra","GNU Image Manipulation Program"),
-    ("vlc","3.0.20-4","extra","Multi-platform MPEG and DVD player"),
-    ("htop","3.3.0-2","extra","Interactive process viewer"),
-    ("python-pip","24.0-1","extra","The PyPA recommended tool for installing Python packages"),
-    ("docker","25.0.3-1","extra","Pack, ship and run applications as containers"),
-    ("nodejs","21.6.1-1","extra","Evented I/O for V8 Javascript"),
-    ("npm","10.5.0-1","extra","The package manager for JavaScript"),
-    ("rust","1.76.0-1","extra","Systems programming language focused on safety"),
-    ("go","2:1.22.0-1","extra","Core compiler tools for the Go programming language"),
-    ("cmake","3.28.3-1","extra","A cross-platform open-source make system"),
-    ("flatpak","1.15.6-1","extra","Linux application sandboxing and distribution"),
-    ("lib32-glibc","2.39-1","multilib","GNU C Library (32-bit)"),
-    ("lib32-mesa","23.3.5-1","multilib","Open-source implementation of OpenGL (32-bit)"),
-    ("neofetch","7.1.0-2","aur","A fast, highly customizable system info script"),
-    ("yay","12.3.5-1","aur","Yet another yogurt — AUR helper written in Go"),
-    ("paru","2.0.1-1","aur","Feature packed AUR helper"),
-    ("timeshift","24.01.1-1","aur","A system restore utility for Linux"),
-    ("visual-studio-code-bin","1.87.0-1","aur","Visual Studio Code editor from Microsoft"),
-    ("google-chrome","122.0.6261.128-1","aur","The popular web browser from Google"),
-]
-
-
 # ─── Helpers ──────────────────────────────────────────────────────────────────
 
 def run_command(cmd, timeout=30):
