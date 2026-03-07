@@ -91,7 +91,6 @@ class pachubWindow(Adw.ApplicationWindow):
         menu_btn.set_icon_name("open-menu-symbolic")
         menu_btn.add_css_class("flat")
         menu = Gio.Menu()
-        menu.append("Sync Databases",    "app.sync")
         menu.append("Check for Updates", "app.check_updates")
         menu.append("Refresh List",      "app.refresh")
         menu.append_section(None, Gio.Menu())
@@ -201,7 +200,6 @@ class pachubWindow(Adw.ApplicationWindow):
         tools_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=1)
         tools_box.set_margin_start(5); tools_box.set_margin_end(5); tools_box.set_margin_bottom(4)
         tool_items = [
-            ("emblem-synchronizing-symbolic",      "Sync Databases",   self._on_sync_db),
             ("software-update-available-symbolic", "Check Updates",    self._on_check_updates),
             ("network-transmit-receive-symbolic",  "Rate Mirrors",     self._on_rate_mirrors),
             ("user-trash-symbolic",                "Find Orphans",     self._on_show_orphans),
@@ -765,9 +763,6 @@ class pachubWindow(Adw.ApplicationWindow):
         self.btn_install.set_sensitive(False); self.btn_remove.set_sensitive(False)
         self.update_banner.set_revealed(False)
         self._load_packages()
-
-    def _on_sync_db(self, *_):
-        self._run_terminal("sudo -S pacman -Sy --noconfirm", "Sync Databases")
 
     def _on_upgrade(self, *_):
         def _after():
