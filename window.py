@@ -91,6 +91,7 @@ class pachubWindow(Adw.ApplicationWindow):
         menu_btn.set_icon_name("open-menu-symbolic")
         menu_btn.add_css_class("flat")
         menu = Gio.Menu()
+        menu.append("Sync Databases",    "app.sync")
         menu.append("Check for Updates", "app.check_updates")
         menu.append("Refresh List",      "app.refresh")
         menu.append_section(None, Gio.Menu())
@@ -763,6 +764,9 @@ class pachubWindow(Adw.ApplicationWindow):
         self.btn_install.set_sensitive(False); self.btn_remove.set_sensitive(False)
         self.update_banner.set_revealed(False)
         self._load_packages()
+
+    def _on_sync_db(self, *_):
+        self._run_terminal("sudo -S pacman -Sy --noconfirm", "Sync Databases")
 
     def _on_upgrade(self, *_):
         def _after():
